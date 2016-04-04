@@ -20,7 +20,6 @@ if(len(sys.argv) < 3):
 listName = sys.argv[1];
 sourceFolder = sys.argv[2];
 myPath = sourceFolder;
-print myPath
 
 exclude = [thisName, listName]
 # Get all files in the current folder, except for this and fileName
@@ -30,7 +29,6 @@ onlyFiles.sort()
 # Make a new directory
 
 targetFolder = join(sourceFolder, 'toGrade')
-print targetFolder
 if not exists(targetFolder):
     makedirs(targetFolder)
 
@@ -40,7 +38,7 @@ f = open(listName, 'r')
 for line in f:
 	line = line.strip()
 	# print line
-	tokens = line.split(' ')
+	tokens = re.split('[ \t\n,]', line)
 
 	tmp = []
 	for a in tokens:
